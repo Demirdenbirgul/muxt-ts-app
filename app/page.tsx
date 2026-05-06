@@ -1,12 +1,17 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import React from "react";
+'use client';
+import Nav from "@/components/shared/Nav";
+import styles from "./page.module.css";
+import Banner from "@/components/shared/Banner";
+import { Container } from "@mui/material";
 
 const Home = () => {
   return (
-    <Box>
-      <Typography variant="h1">Home</Typography>
-    </Box>
+    <>
+      <Banner />
+      <Container maxWidth="lg">
+        <Nav />
+      </Container>
+    </>
   );
 };
 
