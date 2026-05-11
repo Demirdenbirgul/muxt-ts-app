@@ -4,6 +4,8 @@ import Image from "next/image";
 import DropDownMenu from "./DropDownMenu";
 import { COLORS } from "@/styles";
 import SearchBar from "./SearchBar";
+import PersonIcon from "@mui/icons-material/Person";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const Nav = () => {
   return (
@@ -29,7 +31,7 @@ const Nav = () => {
         </Typography>
       </Box>
       <DropDownMenu
-        sx={{ color: COLORS.darkGrey }}
+        sx={{ color: COLORS.darkGrey, fontSize: "1rem" }}
         buttonName="Categories"
         menuOptions={[
           "Furniture",
@@ -45,8 +47,14 @@ const Nav = () => {
       <Typography>What's New</Typography>
       <Typography>Delivery</Typography>
       <SearchBar />
-      <Typography>Account</Typography>
-      <Typography>Cart</Typography>
+      <Typography sx={{display: "flex"}}>
+        <PersonIcon sx={{marginRight: ".25rem"}}/>
+        Account
+      </Typography>
+      <Typography sx={{display: "flex"}}>
+        <AddShoppingCartIcon sx={{marginRight: ".25rem"}}/>
+        Cart
+      </Typography>
     </Box>
   );
 };

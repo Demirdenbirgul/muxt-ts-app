@@ -28,9 +28,9 @@ const SearchBar = () => {
           }
           sx={{
             color: "#000",
-            backgroundColor: COLORS.lightGrey,
+            backgroundColor: COLORS.lightesGrey,
             borderRadius: "3rem",
-            padding: "0 0.5rem",
+            padding: "0 1rem",
 
             "&.MuiInputBase-root::before": {
                 borderBottom: "none"
