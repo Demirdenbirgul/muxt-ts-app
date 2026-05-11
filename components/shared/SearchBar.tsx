@@ -16,7 +16,7 @@ const SearchBar = () => {
   return (
     <Box>
       <FormControl
-        sx={{ display: "flex", flexDirection: "row" }}
+        sx={{ display: "flex", flexDirection: "row", marginInline: "30px" }}
         onSubmit={handleSearch}
       >
         <Input

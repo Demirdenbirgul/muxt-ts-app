@@ -14,7 +14,9 @@ const Nav = () => {
         color: COLORS.darkGrey,
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "center",
+        gap: "35px",
+        margin: "10px 0"
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
