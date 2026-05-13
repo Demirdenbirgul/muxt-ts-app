@@ -33,7 +33,7 @@ const Products = () => {
         overflowX: "hidden",
       }}
     >
-      {products.slice(0, 20).map((product: any) => (
+      {products.slice(0, 9).map((product: any) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </Box>

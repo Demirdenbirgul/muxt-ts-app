@@ -7,6 +7,8 @@ interface Props {
 }
 
 const ProductCard = ({ product }: Props) => {
+  const ratingValue = (product.id % 5) + 1;
+
   return (
     <Box
       sx={{
@@ -96,8 +98,25 @@ const ProductCard = ({ product }: Props) => {
         </Typography>
 
         {/* RATING */}
-        <Box sx={{ mt: 1.5 }}>
-          <Rating value={4} precision={0.5} readOnly />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 0.5,
+            mt: 1.5,
+          }}
+        >
+          <Rating value={5} readOnly size="small" />
+
+          <Typography
+            sx={{
+              fontSize: "14px",
+              color: "#777",
+              lineHeight: 1,
+            }}
+          >
+            ({product.id * 12})
+          </Typography>
         </Box>
 
         {/* BUTTON */}
