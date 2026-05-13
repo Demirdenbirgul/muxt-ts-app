@@ -9,9 +9,11 @@
   margin: 0;
 }
 
+html,
 body {
   color: rgb(var(--foreground));
   background: var(--background);
+  overflow-x: hidden;
 }
 
 a {

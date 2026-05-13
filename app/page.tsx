@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Banner from "@/components/shared/Banner";
 import { Container } from "@mui/material";
 import Hero from "@/components/shared/Hero";
+import Products from "@/components/shared/Products";
 
 const Home = () => {
   return (
@@ -13,6 +14,9 @@ const Home = () => {
         <Nav />
       </Container>
       <Hero />
+      <Container maxWidth="lg">
+        <Products />
+      </Container>
     </>
   );
 };

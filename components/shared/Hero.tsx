@@ -43,7 +43,14 @@ const Hero = () => {
         }}
       >
         {/* Content (sol taraf) */}
-        <Box sx={{ maxWidth: "500px", color: "#fff" }}>
+        <Box
+          sx={{
+            maxWidth: "500px",
+            color: "#fff",
+            position: "relative",
+            top: "35px",
+          }}
+        >
           <Typography
             variant="h3"
             sx={{
