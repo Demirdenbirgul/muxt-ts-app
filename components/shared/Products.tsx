@@ -4,16 +4,7 @@ import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-const Products = () => {
-  const [products, setProducts] = useState<any[]>([]);
-
-  useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-  }, []);
+const Products = ({ products }: { products: any[] }) => {
 
   return (
     <Box
@@ -33,7 +24,7 @@ const Products = () => {
         overflowX: "hidden",
       }}
     >
-      {products.slice(0, 9).map((product: any) => (
+      {products.slice(0, 9).map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </Box>

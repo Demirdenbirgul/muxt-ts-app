@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -10,7 +10,7 @@ import { SxProps, Theme } from "@mui/material";
 interface Props {
   buttonName: string;
   menuOptions: string[];
-  sx?: SxProps<Theme>; 
+  sx?: SxProps<Theme>;
 }
 
 const DropDownMenu = ({ buttonName, menuOptions, sx }: Props) => {
@@ -31,10 +31,10 @@ const DropDownMenu = ({ buttonName, menuOptions, sx }: Props) => {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{color:"white", textTransform:"none", ...sx}}
+        sx={{ color: "white", textTransform: "none", ...sx }}
       >
-        {open ? <ExpandLessIcon /> : <ExpandMoreIcon /> }
-       {buttonName}
+        {open ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        {buttonName}
       </Button>
       <Menu
         id="basic-menu"
@@ -47,9 +47,11 @@ const DropDownMenu = ({ buttonName, menuOptions, sx }: Props) => {
           },
         }}
       >
-        {menuOptions.map((option) => {
-          return <MenuItem onClick={handleClose}>{option}</MenuItem>;
-        })}
+        {menuOptions.map((option) => (
+          <MenuItem key={option} onClick={handleClose}>
+            {option}
+          </MenuItem>
+        ))}
       </Menu>
     </div>
   );
