@@ -6,6 +6,43 @@ interface Props {
   product: any;
 }
 
+const safeImage = (src?: any) => {
+  const FALLBACK = "/images/furniture-banner.png";
+
+  if (!src) return FALLBACK;
+
+  let finalSrc = src;
+
+  // 1. Array veya Stringified Array kontrolü
+  try {
+    if (
+      typeof src === "string" &&
+      (src.startsWith("[") || src.startsWith('["'))
+    ) {
+      const parsed = JSON.parse(src);
+      finalSrc = Array.isArray(parsed) ? parsed[0] : src;
+    } else if (Array.isArray(src)) {
+      finalSrc = src[0];
+    }
+  } catch (error) {
+    console.error("Image parsing error:", error);
+    return FALLBACK;
+  }
+
+  // 2. Geçersiz placeholder servislerini temizleme
+  // 'placeho0l' dahil tüm hatalı yazımları yakalar
+  const invalidDomains = ["placehold", "placeho0l", "placeimg"];
+  const isInvalid = invalidDomains.some((domain) =>
+    String(finalSrc).toLowerCase().includes(domain),
+  );
+
+  if (isInvalid || typeof finalSrc !== "string") {
+    return FALLBACK;
+  }
+
+  return finalSrc;
+};
+
 const ProductCard = ({ product }: Props) => {
   const ratingValue = (product.id % 5) + 1;
 
@@ -42,7 +79,7 @@ const ProductCard = ({ product }: Props) => {
           }}
         >
           <Image
-            src={product.images?.[0] || "https://placehold.co/600x400"}
+            src={safeImage(product.images?.[0])}
             alt={product.title}
             fill
             style={{

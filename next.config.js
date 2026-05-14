@@ -8,6 +8,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "placeho0l.co", // Hata veren domain
+      },
+      {
+        protocol: "https",
         hostname: "i.imgur.com",
       },
       {
@@ -16,7 +20,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "placeimg.com",
+        hostname: "placeimg.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "api.escuelajs.co",
       },
     ],
   },

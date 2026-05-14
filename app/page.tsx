@@ -22,25 +22,37 @@ const Home = () => {
     fetchProducts();
   }, []);
 
-  // ✅ unique category list (id bazlı)
   const categories = Array.from(
     new Map(
-      products.map((p) => [
-        p.category.id,
-        {
-          name: p.category.name,
-          image: p.category.image || "/images/furniture-banner.png",
-        },
-      ]),
+      products
+        .filter((p) => p.category) // Kategori objesi olmayanları baştan ele
+        .map((p) => {
+          // Ürün görseli için kullandığımız safeImage mantığını buraya da uygula
+          let catImg = p.category.image;
+
+          if (catImg?.startsWith("[")) {
+            try {
+              catImg = JSON.parse(catImg)[0];
+            } catch {
+              catImg = "/images/furniture-banner.png";
+            }
+          }
+
+          return [
+            p.category.id,
+            {
+              name: p.category.name,
+              image: catImg || "/images/furniture-banner.png",
+            },
+          ];
+        }),
     ).values(),
   );
 
-  // 🔥 filtrelenmiş ürünler
-  const filteredProducts = !products.length
-    ? []
-    : activeCategory === "All"
-      ? products
-      : products.filter((p) => p.category?.name === activeCategory);
+  const filteredProducts = products.filter((p) => {
+    if (activeCategory === "All") return true;
+    return p.category && p.category.name === activeCategory;
+  });
 
   const handleSelect = (cat: string) => {
     console.log("SELECTED:", cat);
@@ -66,7 +78,7 @@ const Home = () => {
             ...categories,
           ]}
           activeCategory={activeCategory}
-          onSelect={setActiveCategory}
+          onSelect={handleSelect}
         />
 
         <Products products={filteredProducts} />
