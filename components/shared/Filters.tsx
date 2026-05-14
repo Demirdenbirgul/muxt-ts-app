@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import CategoryBox from "./CategoryBox";
 
 type Category = {
@@ -30,7 +30,8 @@ const safeImage = (src?: string) => {
 
 const Filters = ({ categories, onSelect, activeCategory }: Props) => {
   return (
-    <Box
+    <Container
+      maxWidth="lg"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -38,7 +39,16 @@ const Filters = ({ categories, onSelect, activeCategory }: Props) => {
         marginTop: "50px",
       }}
     >
-      <Typography variant="h5" sx={{ marginBottom: "25px", fontWeight: "bold" }}>
+      <Typography
+        variant="h5"
+        sx={{
+          fontWeight: 700,
+          textAlign: "left",
+          mb: 6,
+          fontSize: { xs: "22px", md: "28px" },
+          color: "#333",
+        }}
+      >
         Shop Our Top Categories
       </Typography>
       <Box sx={{ display: "flex", gap: 2 }}>
@@ -52,7 +62,7 @@ const Filters = ({ categories, onSelect, activeCategory }: Props) => {
           />
         ))}
       </Box>
-    </Box>
+    </Container>
   );
 };
 

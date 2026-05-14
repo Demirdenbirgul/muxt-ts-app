@@ -7,6 +7,7 @@ import { Container } from "@mui/material";
 import Hero from "@/components/shared/Hero";
 import Products from "@/components/shared/Products";
 import Filters from "@/components/shared/Filters";
+import Brands from "@/components/shared/Brands";
 
 const Home = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -68,7 +69,7 @@ const Home = () => {
 
       <Hero />
 
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Filters
           categories={[
             {
@@ -82,6 +83,7 @@ const Home = () => {
         />
 
         <Products products={filteredProducts} />
+        <Brands />
       </Container>
     </>
   );
