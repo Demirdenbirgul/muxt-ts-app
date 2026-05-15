@@ -10,6 +10,7 @@ import Filters from "@/components/shared/Filters";
 import Brands from "@/components/shared/Brands";
 import DiscountSection from "@/components/shared/DiscountSection";
 import PopularProducts from "@/components/shared/PopularProducts";
+import CtaSection from "@/components/shared/Cta";
 
 const Home = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -89,6 +90,7 @@ const Home = () => {
         <DiscountSection />
         <PopularProducts products={products} />
       </Container>
+      <CtaSection />
     </>
   );
 };
