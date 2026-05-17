@@ -13,6 +13,7 @@ import PopularProducts from "@/components/shared/PopularProducts";
 import CtaSection from "@/components/shared/Cta";
 import Footer from "@/components/shared/Footer";
 import DealsSection from "@/components/shared/DealsSection";
+import TrendingSection from "@/components/shared/TrendingSection";
 
 const Home = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -31,9 +32,8 @@ const Home = () => {
   const categories = Array.from(
     new Map(
       products
-        .filter((p) => p.category) // Kategori objesi olmayanları baştan ele
+        .filter((p) => p.category)
         .map((p) => {
-          // Ürün görseli için kullandığımız safeImage mantığını buraya da uygula
           let catImg = p.category.image;
 
           if (catImg?.startsWith("[")) {
@@ -95,6 +95,7 @@ const Home = () => {
       <CtaSection />
       <Container maxWidth="xl">
         {products && products.length > 0 && <DealsSection products={products} />}
+        <TrendingSection />
       </Container>
       <Footer />
     </>
