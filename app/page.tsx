@@ -12,6 +12,7 @@ import DiscountSection from "@/components/shared/DiscountSection";
 import PopularProducts from "@/components/shared/PopularProducts";
 import CtaSection from "@/components/shared/Cta";
 import Footer from "@/components/shared/Footer";
+import DealsSection from "@/components/shared/DealsSection";
 
 const Home = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -92,6 +93,9 @@ const Home = () => {
         <PopularProducts products={products} />
       </Container>
       <CtaSection />
+      <Container maxWidth="xl">
+        {products && products.length > 0 && <DealsSection products={products} />}
+      </Container>
       <Footer />
     </>
   );
