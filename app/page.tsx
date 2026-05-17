@@ -14,6 +14,7 @@ import CtaSection from "@/components/shared/Cta";
 import Footer from "@/components/shared/Footer";
 import DealsSection from "@/components/shared/DealsSection";
 import TrendingSection from "@/components/shared/TrendingSection";
+import CashbackBanner from "@/components/shared/CashbackBanner";
 
 const Home = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -97,6 +98,7 @@ const Home = () => {
         {products && products.length > 0 && <DealsSection products={products} />}
         <TrendingSection />
       </Container>
+      <CashbackBanner />
       <Footer />
     </>
   );
