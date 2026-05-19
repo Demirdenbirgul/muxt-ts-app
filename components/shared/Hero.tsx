@@ -9,7 +9,8 @@ const Hero = () => {
         position: "relative",
         width: "100%",
         height: {
-          xs: "300px",
+          xs: "420px", // mobile yükseklik artırıldı
+          sm: "500px", // tablet için ara breakpoint
           md: "640px",
         },
         overflow: "hidden",
@@ -23,10 +24,20 @@ const Hero = () => {
         priority
         style={{
           objectFit: "cover",
+          objectPosition: "center", // görsel hizalama iyileştirildi
         }}
       />
 
-      {/* Overlay */}
+      {/* Dark Overlay */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0, // top left width height yerine kısa kullanım
+          backgroundColor: "rgba(0,0,0,0.35)", // mobile readability için overlay
+        }}
+      />
+
+      {/* Content Overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -37,18 +48,34 @@ const Hero = () => {
           display: "flex",
           alignItems: "center",
           px: {
-            xs: 2,
+            xs: 3, // mobile padding artırıldı
+            sm: 5,
             md: 10,
+          },
+          justifyContent: {
+            xs: "center", // mobile ortalama
+            md: "flex-start",
+          },
+          textAlign: {
+            xs: "center", // mobile text ortalama
+            md: "left",
           },
         }}
       >
-        {/* Content (sol taraf) */}
+        {/* Content */}
         <Box
           sx={{
-            maxWidth: "500px",
+            maxWidth: {
+              xs: "100%", // mobile tam genişlik
+              sm: "500px",
+            },
             color: "#fff",
             position: "relative",
-            top: "35px",
+            top: {
+              xs: "0", // mobile top kaldırıldı
+              md: "35px",
+            },
+            zIndex: 2, // overlay üstüne çıkarıldı
           }}
         >
           <Typography
@@ -57,7 +84,8 @@ const Hero = () => {
               fontWeight: 700,
               lineHeight: 1.2,
               fontSize: {
-                xs: "24px",
+                xs: "2rem", // mobile responsive font
+                sm: "2.8rem",
                 md: "48px",
               },
             }}
@@ -72,10 +100,11 @@ const Hero = () => {
               mt: 2,
               mb: 3,
               fontSize: {
-                xs: "14px",
+                xs: "0.95rem", // mobile typography iyileştirme
                 md: "16px",
               },
               opacity: 0.9,
+              lineHeight: 1.7, // readability artırıldı
             }}
           >
             Find the best deals and trending products all in one place.
@@ -86,12 +115,26 @@ const Hero = () => {
             sx={{
               backgroundColor: COLORS.darkGreen,
               color: COLORS.lightesGrey,
-              px: 5,
+              px: {
+                xs: 4, // mobile button padding
+                md: 5,
+              },
               py: 1.7,
-              fontSize: "16px",
+              fontSize: {
+                xs: "14px", // mobile button font küçültüldü
+                md: "16px",
+              },
               fontWeight: 600,
               textTransform: "none",
               borderRadius: "35px",
+              width: {
+                xs: "100%", // mobile full width button
+                sm: "auto",
+              },
+              maxWidth: {
+                xs: "280px", // aşırı büyümeyi engelle
+                sm: "unset",
+              },
               "&:hover": {
                 backgroundColor: COLORS.darkGrey,
               },

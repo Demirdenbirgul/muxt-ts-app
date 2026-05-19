@@ -10,20 +10,51 @@ const Banner = () => {
         maxWidth="lg"
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           alignItems: "center",
           justifyContent: "space-between",
+          gap: 2,
           color: COLORS.white,
-          padding: "0.5rem 0",
+          py: 1.5,
+          padding: { xs: "center", md: "left" },
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <Phone />
-          <Typography>+001234567890</Typography>
+          <Phone fontSize="small" />
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: {
+                xs: ".8rem",
+                sm: ".9rem",
+              },
+            }}
+          >
+            +001234567890
+          </Typography>
         </Box>
-        <Box>
-          <Typography>Get 50% Off on Selected Items | Shop Now </Typography>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+
+        <Typography
+          variant="body2"
+          sx={{
+            fontSize: {
+              xs: ".8rem",
+              sm: ".9rem",
+            },
+          }}
+        >
+          Get 50% Off on Selected Items | Shop Now{" "}
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           <DropDownMenu
             buttonName="Language"
             menuOptions={["English", "French", "Spanish"]}

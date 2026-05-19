@@ -36,22 +36,51 @@ const Filters = ({ categories, onSelect, activeCategory }: Props) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        marginTop: "50px",
+        mt: {
+          xs: 5, // mobile margin top
+          md: 7,
+        },
+        px: {
+          xs: 2, // mobile yatay boşluk
+          md: 0,
+        },
       }}
     >
       <Typography
         variant="h5"
         sx={{
           fontWeight: 700,
-          textAlign: "left",
-          mb: 6,
-          fontSize: { xs: "22px", md: "28px" },
+          textAlign: {
+            xs: "center", // mobile ortalama
+            md: "left",
+          },
+          mb: {
+            xs: 4, // mobile margin küçültüldü
+            md: 6,
+          },
+          fontSize: {
+            xs: "1.5rem", // responsive typography
+            md: "28px",
+          },
           color: "#333",
         }}
       >
         Shop Our Top Categories
       </Typography>
-      <Box sx={{ display: "flex", gap: 2 }}>
+
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          overflowX: "auto", // mobile horizontal scroll
+          pb: 1, // scrollbar için boşluk
+          scrollbarWidth: "none", // firefox scrollbar gizleme
+
+          "&::-webkit-scrollbar": {
+            display: "none", // chrome scrollbar gizleme
+          },
+        }}
+      >
         {categories.map((category) => (
           <CategoryBox
             key={category.name}

@@ -7,7 +7,6 @@ type Props = {
   onClick?: () => void;
 };
 
-// Proje genelinde tek bir standart fallback görseli kullanmak daha iyidir
 const FALLBACK_IMAGE = "/images/furniture-banner.png";
 
 const safeImage = (src?: string) => {
@@ -15,7 +14,6 @@ const safeImage = (src?: string) => {
 
   let finalSrc = src;
 
-  // 1. Veri "[\"url\"]" formatındaysa temizle
   if (typeof src === "string" && src.startsWith("[")) {
     try {
       const parsed = JSON.parse(src);
@@ -25,8 +23,8 @@ const safeImage = (src?: string) => {
     }
   }
 
-  // 2. Geçersiz veya hatalı yazılmış domainleri kontrol et
   const forbiddenKeywords = ["placehold", "placeho0l", "placeimg"];
+
   const isForbidden = forbiddenKeywords.some((keyword) =>
     String(finalSrc).toLowerCase().includes(keyword)
   );
@@ -43,8 +41,14 @@ const CategoryBox = ({ name, image, active, onClick }: Props) => {
     <Box
       onClick={onClick}
       sx={{
-        minWidth: 140,
-        height: 90,
+        minWidth: {
+          xs: 120, // mobile kutu küçültüldü
+          sm: 140,
+        },
+        height: {
+          xs: 80, // mobile yükseklik küçültüldü
+          sm: 90,
+        },
         borderRadius: "14px",
         overflow: "hidden",
         position: "relative",
@@ -52,6 +56,7 @@ const CategoryBox = ({ name, image, active, onClick }: Props) => {
         flexShrink: 0,
         border: active ? "2px solid #000" : "1px solid #eee",
         transition: "all 0.2s ease",
+
         "&:hover": {
           opacity: 0.9,
           transform: "scale(1.02)",
@@ -66,7 +71,6 @@ const CategoryBox = ({ name, image, active, onClick }: Props) => {
           height: "100%",
           objectFit: "cover",
         }}
-        // URL doğru görünse bile görsel sunucuda yoksa (404) fallback'e dön
         onError={(e) => {
           (e.target as HTMLImageElement).src = FALLBACK_IMAGE;
         }}
@@ -81,9 +85,12 @@ const CategoryBox = ({ name, image, active, onClick }: Props) => {
           background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)",
           color: "#fff",
           p: 1,
-          fontSize: "13px",
+          fontSize: {
+            xs: "12px", // mobile text küçültüldü
+            sm: "13px",
+          },
           fontWeight: 600,
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
         {name}
